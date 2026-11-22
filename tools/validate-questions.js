@@ -11,7 +11,7 @@ const path = require("path");
 
 const file = path.join(__dirname, "..", "questions.json");
 const data = JSON.parse(fs.readFileSync(file, "utf8"));
-const MIN_PER_CATEGORY = 15;
+const MIN_PER_CATEGORY = 200;
 const errors = [];
 
 const catIds = new Set(data.categories.map((c) => c.id));

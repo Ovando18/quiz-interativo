@@ -5,7 +5,7 @@
   "use strict";
 
   /* ---------------- Constantes ---------------- */
-  const QUESTION_TIME_MS = 10000;      // Regra de ouro: 10 segundos exatos
+  const QUESTION_TIME_MS = 15000;      // Regra de ouro: 15 segundos exatos
   const AUTO_ADVANCE_MS = 3000;        // Avanço automático após revelar
   const RING_LENGTH = 2 * Math.PI * 52; // Circunferência do anel SVG (r = 52)
   const LETTERS = ["A", "B", "C", "D"];
@@ -190,7 +190,7 @@
       dom.categoryGrid.append(btn);
     });
     if (!cats.some((c) => c.id === settings.category)) settings.category = "mixed";
-    dom.bankInfo.textContent = `${bank.questions.length} perguntas em ${bank.categories.length} categorias · 10 segundos cada`;
+    dom.bankInfo.textContent = `${bank.questions.length} perguntas em ${bank.categories.length} categorias · ${QUESTION_TIME_MS / 1000} segundos cada`;
     syncSetup();
   }
 

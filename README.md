@@ -1,6 +1,6 @@
 # ⚡ Quiz Relâmpago — Quiz Interativo Multitemático
 
-Jogo de perguntas e respostas no estilo *show de perguntas*: **10 segundos por pergunta**, 4 alternativas, sons sintéticos e um **Modo Apresentação/TV** para jogar em família ou na sala de aula.
+Jogo de perguntas e respostas no estilo *show de perguntas*: **15 segundos por pergunta**, 4 alternativas, sons sintéticos e um **Modo Apresentação/TV** para jogar em família ou na sala de aula.
 
 Feito com **HTML5 + CSS3 + JavaScript puro**. Não usa frameworks, `npm` nem *build*. É só subir os arquivos no GitHub e ativar o GitHub Pages.
 
@@ -10,29 +10,29 @@ Feito com **HTML5 + CSS3 + JavaScript puro**. Não usa frameworks, `npm` nem *bu
 
 | Recurso | Detalhes |
 |---|---|
-| ⏱️ **Cronômetro de 10s** | Anel circular + barra fluida que muda de cor: **verde** (10–6s) → **laranja** (5–3s) → **vermelho pulsante** (2–0s). |
-| ✅ **Revelação** | Ao fim dos 10s a correta fica **verde**, as erradas **vermelhas**, aparece uma explicação/curiosidade e o botão **"Próxima pergunta"**. |
+| ⏱️ **Cronômetro de 15s** | Anel circular + barra fluida que muda de cor: **verde** (15–6s) → **laranja** (5–3s) → **vermelho pulsante** (2–0s). |
+| ✅ **Revelação** | Ao fim dos 15s a correta fica **verde**, as erradas **vermelhas**, aparece uma explicação/curiosidade e o botão **"Próxima pergunta"**. |
 | 🎮 **Modo Interativo** | Responda clicando ou pelo teclado. Acerto = 500 pts + até 500 de bônus pela rapidez. Mostra sequências de acertos 🔥. |
 | 📺 **Modo Apresentação/TV** | Ninguém clica: a pergunta aparece, o tempo corre e a resposta é revelada sozinha. Fontes maiores em telas grandes. |
-| ⚙️ **Opções** | Avanço automático 3s após revelar · Revelar logo após responder (ou esperar os 10s, que é o padrão). |
+| ⚙️ **Opções** | Avanço automático 3s após revelar · Revelar logo após responder (ou esperar os 15s, que é o padrão). |
 | 🔊 **Sons (Web Audio API)** | Tic-tac nos últimos 3s, acerto, erro, tempo esgotado e fanfarra final, todos gerados por código (sem arquivos `.mp3`). Botão de mudo no cabeçalho, e a escolha fica salva. |
 | 🏁 **Placar final** | Pontuação, % de acertos, tempo médio de resposta, maior sequência, medalha 🥇🥈🥉, recorde por tema e revisão das erradas com explicação. |
 | 🔀 **Sem repetição** | Nenhuma pergunta se repete na mesma partida. Alternativas são embaralhadas a cada vez. O jogo também prioriza perguntas que você ainda não viu recentemente. |
 | 📱 **Responsivo** | Desktop, tablet e celular. |
 | ⌨️ **Atalhos** | `1`–`4` ou `A`–`D` responder · `Enter`/`Espaço`/`→` próxima · `M` som · `Esc` sair. |
 
-### 📚 Categorias (156 perguntas)
+### 📚 Categorias (1.993 perguntas)
 
 | Categoria | Qtde | Conteúdo |
 |---|---|---|
-| 🌎 Geografia | 36 | 13 **capitais do Brasil** · 12 **bandeiras** (com imagem) · 11 **continentes** |
-| ➗ Matemática | 20 | Cálculo mental, porcentagem, frações, regra de três, potências, geometria |
-| 🧩 Raciocínio Lógico | 20 | Sequências numéricas e alfabéticas, charadas, silogismos, deduções |
-| 📖 Bíblico | 20 | Personagens, livros, milagres, parábolas, reis e profetas |
-| 🇺🇸 Inglês | 20 | Vocabulário, *idioms*, *false friends*, tempos verbais, lacunas |
-| 🇪🇸 Espanhol | 20 | *Heterosemánticos* (embarazada, exquisito, oficina…), conjugações, expressões |
-| 💡 Conhecimentos Gerais | 20 | História do Brasil e mundial, ciências, astronomia, literatura, inventos |
-| 🎲 Todas Misturadas | 156 | Sorteia de todas, equilibrando as categorias |
+| 🌎 Geografia | 301 | 77 **Brasil** (capitais, estados e regiões) · 119 **bandeiras** (com imagem) · 105 **continentes** |
+| ➗ Matemática | 318 | Tabuada, contas, porcentagem, frações, decimais, potências, raízes, regra de três, geometria, ordem das operações |
+| 🧩 Raciocínio Lógico | 229 | Sequências numéricas e de letras, dias da semana, ordenação, charadas, silogismos, analogias |
+| 📖 Bíblico | 267 | Personagens e eventos do AT e NT, parábolas, milagres, ordem e grupos dos livros |
+| 🇺🇸 Inglês | 384 | Vocabulário por tema, verbos irregulares, plurais, opostos, gramática, *idioms* e *false friends* |
+| 🇪🇸 Espanhol | 272 | *Heterosemánticos* (embarazada, exquisito, oficina…), vocabulário, conjugação, *ser/estar*, expressões |
+| 💡 Conhecimentos Gerais | 222 | Capitais do mundo, símbolos químicos, autores, datas históricas, inventores, artes, ciência e esportes |
+| 🎲 Todas Misturadas | 1.993 | Sorteia de todas, equilibrando as categorias |
 
 As bandeiras vêm de `https://flagcdn.com/w320/{código}.png`. Se a imagem falhar, o jogo tenta a versão SVG (`https://flagcdn.com/{código}.svg`) e, por último, mostra o emoji da bandeira.
 
@@ -158,9 +158,9 @@ Abra `questions.json` e adicione um objeto em `"questions"`:
 - `options`: exatamente 4 alternativas. **`answer`** é o índice (0–3) da correta. A ordem na tela é sempre embaralhada.
 - `id`: único (o validador confere).
 - Perguntas de bandeira: use `"subtype": "bandeiras"` e `"flag": "xx"`, com o código ISO 3166-1 alfa-2 em minúsculas (ex.: `"fr"`, `"eg"`, `"nz"`). Veja a lista em https://flagcdn.com/pt/codes.json.
-- Em Geografia, o campo `subtype` (`capitais`, `bandeiras`, `continentes`) faz o jogo sortear os três tipos de forma equilibrada.
+- Em Geografia, o campo `subtype` (`brasil`, `bandeiras`, `continentes`) faz o jogo sortear os três tipos de forma equilibrada.
 
-Depois rode `node tools/validate-questions.js` para conferir.
+Depois rode `node tools/validate-questions.js` para conferir (ele também exige pelo menos 200 perguntas por categoria).
 
 ---
 
