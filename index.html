@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quiz Interativo Multitemático: Geografia, Matemática, Lógica, Bíblico, Inglês, Espanhol e Conhecimentos Gerais com 10 segundos por pergunta." />
+  <meta name="theme-color" content="#1e1b4b" />
+  <title>Quiz Relâmpago · 10 segundos por pergunta</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://flagcdn.com" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="bg-shapes" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="topbar">
+    <button class="brand" id="brandBtn" type="button" aria-label="Voltar para a tela inicial">
+      <span class="brand-icon">⚡</span>
+      <span class="brand-text">Quiz <strong>Relâmpago</strong></span>
+    </button>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="muteBtn" type="button" aria-label="Desativar som" title="Som (M)">🔊</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- ============ TELA INICIAL ============ -->
+    <section class="screen active" id="screen-home" aria-labelledby="homeTitle">
+      <div class="hero">
+        <h1 id="homeTitle">10 segundos. 4 alternativas. <span class="hl">Valendo!</span></h1>
+        <p class="subtitle">Escolha um tema, ajuste a rodada e teste seus conhecimentos — sozinho ou com a turma toda.</p>
+      </div>
+
+      <div class="card setup">
+        <h2 class="setup-title"><span class="step">1</span> Escolha a categoria</h2>
+        <div class="category-grid" id="categoryGrid" role="radiogroup" aria-label="Categorias"></div>
+
+        <div class="setup-row">
+          <div class="setup-block">
+            <h2 class="setup-title"><span class="step">2</span> Perguntas por rodada</h2>
+            <div class="segmented" id="countGroup" role="radiogroup" aria-label="Quantidade de perguntas">
+              <button type="button" role="radio" data-count="5">5</button>
+              <button type="button" role="radio" data-count="10">10</button>
+              <button type="button" role="radio" data-count="15">15</button>
+              <button type="button" role="radio" data-count="20">20</button>
+            </div>
+          </div>
+
+          <div class="setup-block">
+            <h2 class="setup-title"><span class="step">3</span> Modo de jogo</h2>
+            <div class="mode-toggle" id="modeGroup" role="radiogroup" aria-label="Modo de jogo">
+              <button type="button" role="radio" data-mode="interactive">
+                <span class="mode-icon">🎮</span>
+                <span><strong>Interativo</strong><small>Responda e ganhe pontos pela rapidez</small></span>
+              </button>
+              <button type="button" role="radio" data-mode="tv">
+                <span class="mode-icon">📺</span>
+                <span><strong>Apresentação / TV</strong><small>Ninguém clica: o tempo corre e a resposta é revelada</small></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="options-row">
+          <label class="switch">
+            <input type="checkbox" id="autoAdvance" />
+            <span class="slider" aria-hidden="true"></span>
+            <span>Avançar sozinho 3s após revelar</span>
+          </label>
+          <label class="switch" id="instantRevealWrap">
+            <input type="checkbox" id="instantReveal" />
+            <span class="slider" aria-hidden="true"></span>
+            <span>Revelar logo após responder (sem esperar os 10s)</span>
+          </label>
+        </div>
+
+        <button class="btn btn-primary btn-xl" id="startBtn" type="button">Começar partida ▶</button>
+        <p class="hint" id="bankInfo">Carregando banco de questões…</p>
+      </div>
+
+      <p class="shortcuts">⌨️ Atalhos: <kbd>1</kbd>–<kbd>4</kbd> ou <kbd>A</kbd>–<kbd>D</kbd> para responder · <kbd>Enter</kbd> próxima · <kbd>M</kbd> som · <kbd>Esc</kbd> sair</p>
+    </section>
+
+    <!-- ============ TELA DO JOGO ============ -->
+    <section class="screen" id="screen-game" aria-label="Partida em andamento">
+      <div class="game-head">
+        <button class="btn btn-ghost btn-sm" id="quitBtn" type="button">✕ Sair</button>
+        <div class="game-meta">
+          <span class="chip" id="catChip">Categoria</span>
+          <span class="progress-text" id="progressText">1 / 10</span>
+        </div>
+        <div class="score-box" id="scoreBox"><span>Pontos</span><strong id="scoreValue">0</strong></div>
+      </div>
+
+      <div class="round-progress" aria-hidden="true"><div class="round-progress-fill" id="roundFill"></div></div>
+
+      <div class="card question-card" id="questionCard">
+        <div class="timer-wrap">
+          <div class="timer-circle" id="timerCircle" role="timer" aria-live="off">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="ring-bg" cx="60" cy="60" r="52" />
+              <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52" />
+            </svg>
+            <span class="timer-number" id="timerNumber">10</span>
+          </div>
+          <div class="timer-bar"><div class="timer-bar-fill" id="timerFill"></div></div>
+        </div>
+
+        <div class="flag-wrap hidden" id="flagWrap">
+          <img id="flagImg" alt="Bandeira de um país" width="320" height="213" />
+          <span class="flag-emoji hidden" id="flagEmoji" aria-hidden="true"></span>
+        </div>
+
+        <h2 class="question-text" id="questionText">…</h2>
+
+        <div class="answers" id="answers"></div>
+
+        <p class="status-line" id="statusLine" aria-live="polite"></p>
+
+        <div class="feedback hidden" id="feedback" aria-live="polite">
+          <div class="feedback-title" id="feedbackTitle"></div>
+          <p class="feedback-text" id="feedbackText"></p>
+          <button class="btn btn-primary" id="nextBtn" type="button">Próxima pergunta →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TELA DE RESULTADOS ============ -->
+    <section class="screen" id="screen-results" aria-labelledby="resultTitle">
+      <div class="card results-card">
+        <div class="medal" id="medal">🏆</div>
+        <h1 id="resultTitle">Fim de jogo!</h1>
+        <p class="result-rank" id="resultRank"></p>
+
+        <div class="stats" id="stats"></div>
+
+        <p class="best" id="bestScore"></p>
+
+        <div class="result-actions">
+          <button class="btn btn-primary btn-xl" id="againBtn" type="button">🔁 Jogar novamente</button>
+          <button class="btn btn-ghost" id="homeBtn" type="button">🏠 Escolher outro tema</button>
+        </div>
+      </div>
+
+      <div class="card review-card" id="reviewCard">
+        <h2 id="reviewTitle">Revisão</h2>
+        <ol class="review-list" id="reviewList"></ol>
+      </div>
+    </section>
+
+    <!-- ============ ERRO DE CARREGAMENTO ============ -->
+    <section class="screen" id="screen-error" role="alert">
+      <div class="card error-card">
+        <div class="medal">⚠️</div>
+        <h1>Não foi possível carregar as perguntas</h1>
+        <p>O arquivo <code>questions.json</code> não pôde ser lido. Se você abriu o <code>index.html</code> com dois cliques (endereço <code>file://</code>), o navegador bloqueia a leitura de arquivos locais.</p>
+        <p>Rode um servidor local na pasta do projeto, por exemplo:</p>
+        <pre><code>python -m http.server 8000</code></pre>
+        <p>e acesse <code>http://localhost:8000</code>. No GitHub Pages funciona automaticamente.</p>
+        <p class="hint" id="errorDetail"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Feito com HTML, CSS e JavaScript puro · Bandeiras por <a href="https://flagcdn.com" target="_blank" rel="noopener">flagcdn.com</a></footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
