@@ -21,7 +21,7 @@ Feito com **HTML5 + CSS3 + JavaScript puro**. Não usa frameworks, `npm` nem *bu
 | 📱 **Responsivo** | Desktop, tablet e celular. |
 | ⌨️ **Atalhos** | `1`–`4` ou `A`–`D` responder · `Enter`/`Espaço`/`→` próxima · `M` som · `Esc` sair. |
 
-### 📚 Categorias (1.993 perguntas)
+### 📚 Categorias (2.253 perguntas)
 
 | Categoria | Qtde | Conteúdo |
 |---|---|---|
@@ -32,7 +32,8 @@ Feito com **HTML5 + CSS3 + JavaScript puro**. Não usa frameworks, `npm` nem *bu
 | 🇺🇸 Inglês | 384 | Vocabulário por tema, verbos irregulares, plurais, opostos, gramática, *idioms* e *false friends* |
 | 🇪🇸 Espanhol | 272 | *Heterosemánticos* (embarazada, exquisito, oficina…), vocabulário, conjugação, *ser/estar*, expressões |
 | 💡 Conhecimentos Gerais | 222 | Capitais do mundo, símbolos químicos, autores, datas históricas, inventores, artes, ciência e esportes |
-| 🎲 Todas Misturadas | 1.993 | Sorteia de todas, equilibrando as categorias |
+| 🐾 Curiosidades sobre Animais | 260 | Grupos (mamífero, ave, réptil…), alimentação, habitat, sons, coletivos, filhotes, recordes e bichos do Brasil |
+| 🎲 Todas Misturadas | 2.253 | Sorteia de todas, equilibrando as categorias |
 
 As bandeiras vêm de `https://flagcdn.com/w320/{código}.png`. Se a imagem falhar, o jogo tenta a versão SVG (`https://flagcdn.com/{código}.svg`) e, por último, mostra o emoji da bandeira.
 
@@ -154,7 +155,7 @@ Abra `questions.json` e adicione um objeto em `"questions"`:
 }
 ```
 
-- `category`: um dos IDs `geografia`, `matematica`, `logica`, `biblico`, `ingles`, `espanhol`, `gerais`.
+- `category`: um dos IDs `geografia`, `matematica`, `logica`, `biblico`, `ingles`, `espanhol`, `gerais`, `animais`.
 - `options`: exatamente 4 alternativas. **`answer`** é o índice (0–3) da correta. A ordem na tela é sempre embaralhada.
 - `id`: único (o validador confere).
 - Perguntas de bandeira: use `"subtype": "bandeiras"` e `"flag": "xx"`, com o código ISO 3166-1 alfa-2 em minúsculas (ex.: `"fr"`, `"eg"`, `"nz"`). Veja a lista em https://flagcdn.com/pt/codes.json.
