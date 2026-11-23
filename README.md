@@ -21,7 +21,7 @@ Feito com **HTML5 + CSS3 + JavaScript puro**. Não usa frameworks, `npm` nem *bu
 | 📱 **Responsivo** | Desktop, tablet e celular. |
 | ⌨️ **Atalhos** | `1`–`4` ou `A`–`D` responder · `Enter`/`Espaço`/`→` próxima · `M` som · `Esc` sair. |
 
-### 📚 Categorias (2.699 perguntas)
+### 📚 Categorias (3.111 perguntas)
 
 | Categoria | Qtde | Conteúdo |
 |---|---|---|
@@ -35,7 +35,9 @@ Feito com **HTML5 + CSS3 + JavaScript puro**. Não usa frameworks, `npm` nem *bu
 | 🐾 Curiosidades sobre Animais | 260 | Grupos (mamífero, ave, réptil…), alimentação, habitat, sons, coletivos, filhotes, recordes e bichos do Brasil |
 | 🌟 Você sabia? | 215 | Fatos curiosos: corpo humano, espaço, natureza, comidas, invenções, palavras, Brasil, folclore, esportes e mundo |
 | 🤔 O que é, o que é? | 231 | Charadas clássicas, charadas de objetos, natureza, animais e corpo, e piadinhas infantis |
-| 🎲 Todas Misturadas | 2.699 | Sorteia de todas, equilibrando as categorias |
+| 🔬 Ciências | 209 | Física, química, elementos e Tabela Periódica, unidades, energia, Terra, clima e cientistas |
+| 🧬 Biologia | 203 | Célula e organelas, genética, corpo humano, micro-organismos, plantas, classificação e ecologia |
+| 🎲 Todas Misturadas | 3.111 | Sorteia de todas, equilibrando as categorias |
 
 As bandeiras vêm de `https://flagcdn.com/w320/{código}.png`. Se a imagem falhar, o jogo tenta a versão SVG (`https://flagcdn.com/{código}.svg`) e, por último, mostra o emoji da bandeira.
 
@@ -157,7 +159,7 @@ Abra `questions.json` e adicione um objeto em `"questions"`:
 }
 ```
 
-- `category`: um dos IDs `geografia`, `matematica`, `logica`, `biblico`, `ingles`, `espanhol`, `gerais`, `animais`, `vocesabia`, `charadas`.
+- `category`: um dos IDs `geografia`, `matematica`, `logica`, `biblico`, `ingles`, `espanhol`, `gerais`, `animais`, `vocesabia`, `charadas`, `ciencias`, `biologia`.
 - `options`: exatamente 4 alternativas. **`answer`** é o índice (0–3) da correta. A ordem na tela é sempre embaralhada.
 - `id`: único (o validador confere).
 - Perguntas de bandeira: use `"subtype": "bandeiras"` e `"flag": "xx"`, com o código ISO 3166-1 alfa-2 em minúsculas (ex.: `"fr"`, `"eg"`, `"nz"`). Veja a lista em https://flagcdn.com/pt/codes.json.

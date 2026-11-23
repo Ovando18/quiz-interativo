@@ -131,7 +131,7 @@ main { position: relative; z-index: 1; flex: 1; width: 100%; max-width: 980px; m
   content: "✓"; position: absolute; top: 8px; left: 8px; width: 22px; height: 22px; border-radius: 50%;
   background: var(--c); color: #fff; font-size: .8rem; display: grid; place-items: center; font-weight: 700;
 }
-.cat-card.mixed { background: linear-gradient(135deg, #fef9c3, #fce7f3 60%, #ede9fe); grid-column: span 2; }
+.cat-card.mixed { background: linear-gradient(135deg, #fef9c3, #fce7f3 60%, #ede9fe); grid-column: 1 / -1; min-height: 96px; }
 
 .setup-row { display: grid; grid-template-columns: 1fr 1.6fr; gap: 24px; margin-bottom: 20px; }
 
